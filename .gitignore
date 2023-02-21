@@ -127,3 +127,14 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# vscode config
+.vscode
+
+# result folders
+20*/
+results/
+guide/
+
+# Corrected 4TT data generate after the first analysis step
+4TT/data/corr4TT.ascii

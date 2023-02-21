@@ -1,0 +1,328 @@
+default_megacomplex: decay
+
+dataset_groups:
+  default:
+    residual_function: non_negative_least_squares
+
+dataset:
+  DPSI400tr2:
+    megacomplex: [complex1, complex2, complex5]
+    # megacomplex_scale: [scalem.11, scalem.4, scalem.5]
+    megacomplex_scale:
+      [scalem.400.tr2.open, scalem.400.tr2.closed, scalem.400.tr2.nontr]
+    initial_concentration: input400
+    irf: irf2
+    scale: scale.2
+  DPSI590tr2:
+    megacomplex: [complex3, complex4, complex5]
+    # megacomplex_scale: [scalem.12, scalem.9, scalem.10]
+    megacomplex_scale:
+      [scalem.590.tr2.open, scalem.590.tr2.closed, scalem.590.tr2.nontr]
+    initial_concentration: input590
+    irf: irf4
+    scale: scale.4
+  DPSI400tr4:
+    megacomplex: [complex1, complex2, complex5]
+    # megacomplex_scale: [scalem.1, scalem.2, scalem.3]
+    megacomplex_scale:
+      [scalem.400.tr4.open, scalem.400.tr4.closed, scalem.400.tr4.nontr]
+    initial_concentration: input400
+    irf: irf1
+    scale: scale.1
+  DPSI590tr4:
+    megacomplex: [complex3, complex4, complex5]
+    # megacomplex_scale: [scalem.6, scalem.7, scalem.8]
+    megacomplex_scale:
+      [scalem.590.tr4.open, scalem.590.tr4.closed, scalem.590.tr4.nontr]
+    initial_concentration: input590
+    irf: irf3
+    scale: scale.3
+  data_guide_s1:
+    megacomplex: [complex6]
+    initial_concentration: input5
+    scale: scale.5
+  data_guide_s4:
+    megacomplex: [complex7]
+    initial_concentration: input6
+    scale: scale.5
+  # data_guide_s1:
+  #   megacomplex: [guide_s1]
+  #   scale: scale.5
+  # data_guide_s4:
+  #   megacomplex: [guide_s4]
+  #   scale: scale.5
+
+megacomplex:
+  complex1:
+    k_matrix: [km1common, km1out, km1ps2open]
+  complex2:
+    k_matrix: [km1common, km1out, km1ps2closed]
+  complex3:
+    k_matrix: [km1common, km1out, km1ps2open2]
+  complex4:
+    k_matrix: [km1common, km1out, km1ps2closed2]
+  complex5:
+    k_matrix: [km1common, km5out]
+  complex6:
+    k_matrix: [km6]
+  complex7:
+    k_matrix: [km7]
+  # guide_s1:
+  #   dimension: time
+  #   target: s1
+  #   type: clp-guide
+  # guide_s4:
+  #   dimension: time
+  #   target: s1
+  #   type: clp-guide
+
+# how can i now express that the first 20 lines
+# are common for complexes 1-5, and the next 11 lines
+# are common for complexes 1-4? how can i specify in chunks?
+# note that earlier definition will override later definition
+k_matrix:
+  km1common:
+    matrix:
+      (s1, s2): rates.k1
+      (s2, s1): rates.k1
+      (s3, s1): rates.k26
+      (s1, s3): rates.k1
+      (s3, s2): rates.k3
+      (s2, s3): rates.k4
+      (s3, s4): rates.k6
+      (s4, s3): rates.k5
+      (s5, s1): rates.k8
+      (s1, s5): rates.k7
+      (s6, s2): rates.k8
+      (s2, s6): rates.k7
+      (s7, s3): rates.k8
+      (s3, s7): rates.k9
+      (s5, s8): rates.k24
+      (s8, s5): rates.k25
+      (s6, s9): rates.k24
+      (s9, s6): rates.k25
+      (s7, s10): rates.k24
+      (s10, s7): rates.k25
+  km1out:
+    matrix:
+      (s15, s1): rates.k2
+      (s15, s2): rates.k2
+      (s15, s3): rates.k2
+      (s15, s4): rates.k2
+      (s15, s5): rates.k2
+      (s15, s6): rates.k2
+      (s15, s7): rates.k2
+      (s15, s8): rates.k2
+      (s15, s9): rates.k2
+      (s15, s10): rates.k2
+      (s15, s15): rates.k48
+  km1ps2open:
+    matrix:
+      (s11, s4): rates.k56
+      (s4, s11): rates.k57
+      (s11, s11): rates.k52
+      (s11, s12): rates.k53
+      (s12, s11): rates.k54
+      (s12, s12): rates.k55
+  km1ps2closed:
+    matrix:
+      (s11, s4): rates.k56
+      (s4, s11): rates.k57
+      (s11, s11): rates.k52
+      (s11, s12): rates.k43
+      (s12, s11): rates.k44
+      (s12, s12): rates.k45
+  km1ps2open2:
+    matrix:
+      (s13, s4): rates.k56
+      (s4, s13): rates.k57
+      (s13, s13): rates.k52
+      (s13, s14): rates.k53
+      (s14, s13): rates.k54
+      (s14, s14): rates.k55
+  km1ps2closed2:
+    matrix:
+      (s13, s4): rates.k56
+      (s4, s13): rates.k57
+      (s13, s13): rates.k52
+      (s13, s14): rates.k43
+      (s14, s13): rates.k44
+      (s14, s14): rates.k45
+  km5out:
+    matrix:
+      (s16, s1): rates.k40
+      (s16, s2): rates.k40
+      (s16, s3): rates.k40
+      (s16, s4): rates.k40
+      (s16, s5): rates.k40
+      (s16, s6): rates.k40
+      (s16, s7): rates.k40
+      (s16, s8): rates.k40
+      (s16, s9): rates.k40
+      (s16, s10): rates.k40
+      (s16, s16): rates.k48
+  km6:
+    matrix:
+      (s1, s1): rates.k40
+  km7:
+    matrix:
+      (s4, s4): rates.k40
+
+initial_concentration:
+  input400:
+    compartments: [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s15, s16]
+    parameters:
+      [
+        inputs400.APC660,
+        inputs400.APC660,
+        inputs400.APC660a,
+        inputs400.APC680,
+        inputs400.PC650,
+        inputs400.PC650,
+        inputs400.PC650,
+        inputs400.PC640,
+        inputs400.PC640,
+        inputs400.PC640,
+        inputs400.PS2,
+        inputs.s1,
+        inputs.s1,
+        inputs.s1,
+      ]
+  input590:
+    compartments: [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s13, s14, s15, s16]
+    parameters:
+      [
+        inputs590.APC660,
+        inputs590.APC660,
+        inputs590.APC660a,
+        inputs590.APC680,
+        inputs590.PC650,
+        inputs590.PC650,
+        inputs590.PC650,
+        inputs590.PC640,
+        inputs590.PC640,
+        inputs590.PC640,
+        inputs590.PS2,
+        inputs.s1,
+        inputs.s1,
+        inputs.s1,
+      ]
+  input5:
+    compartments: [s1]
+    parameters: [inputs.s2]
+  input6:
+    compartments: [s4]
+    parameters: [inputs.s2]
+
+# 6 needed ! does this mean that the penalty is s1-s2*area.1 ?
+# equal_area_penalties:
+#   - type: equal_area
+#     source: s2
+#     source_intervals: [[0, 1000]]
+#     target: s1
+#     target_intervals: [[0, 1000]]
+#     parameter: area.1
+#     weight: 2.E-3
+
+clp_relations:
+  - source: s1
+    target: s2
+    parameter: rel.r1
+    interval: [[0, 1000]]
+  - source: s1
+    target: s3
+    parameter: rel.r1
+    interval: [[0, 1000]]
+  - source: s5
+    target: s6
+    parameter: rel.r1
+    interval: [[0, 1000]]
+  - source: s5
+    target: s7
+    parameter: rel.r1
+    interval: [[0, 1000]]
+  - source: s8
+    target: s9
+    parameter: rel.r1
+    interval: [[0, 1000]]
+  - source: s8
+    target: s10
+    parameter: rel.r1
+    interval: [[0, 1000]]
+
+clp_constraints:
+  - type: zero
+    target: s12
+    interval:
+      - [1, 1000]
+  - type: zero
+    target: s14
+    interval:
+      - [1, 1000]
+  - type: zero
+    target: s15
+    interval:
+      - [1, 1000]
+  - type: zero
+    target: s16
+    interval:
+      - [1, 1000]
+
+clp_penalties:
+  - type: equal_area
+    source: s11
+    source_intervals: [[1, 1000]]
+    target: s1
+    target_intervals: [[1, 1000]]
+    parameter: area.PS2
+    weight: 0.1
+  - type: equal_area
+    source: s13
+    source_intervals: [[1, 1000]]
+    target: s1
+    target_intervals: [[1, 1000]]
+    parameter: area.PS2
+    weight: 0.1
+    # weight: 0.01
+# it is implicitly normalized, i.e. divided by sum of irfscale parameters
+irf:
+  irf1:
+    type: spectral-multi-gaussian
+    center: [irf.center1]
+    width: [irf.width1, irf.width2]
+    scale: [irf.scale1, irf.scale2]
+    dispersion_center: irf.common_dispcenter
+    center_dispersion_coefficients: [irf.data1_disp1, irf.data1_disp2]
+    # backsweep: True
+    # backsweep_period: irf.common_backsweep
+    # backsweep_exclude: [s15,s16]
+  irf2:
+    type: spectral-multi-gaussian
+    center: [irf.center2]
+    width: [irf.width3, irf.width4]
+    scale: [irf.scale1, irf.scale3]
+    dispersion_center: irf.common_dispcenter
+    center_dispersion_coefficients: [irf.data1_disp1, irf.data1_disp2]
+    # backsweep: True
+    # backsweep_period: irf.common_backsweep
+    # backsweep_exclude: [s15,s16]
+  irf3:
+    type: spectral-multi-gaussian
+    center: [irf.center3]
+    width: [irf.width5, irf.width6]
+    scale: [irf.scale1, irf.scale4]
+    dispersion_center: irf.common_dispcenter
+    center_dispersion_coefficients: [irf.data1_disp3, irf.data1_disp4]
+    # backsweep: True
+    # backsweep_period: irf.common_backsweep
+    # backsweep_exclude: [s15,s16]
+  irf4:
+    type: spectral-multi-gaussian
+    center: [irf.center4]
+    width: [irf.width7, irf.width8]
+    scale: [irf.scale1, irf.scale5]
+    dispersion_center: irf.common_dispcenter
+    center_dispersion_coefficients: [irf.data1_disp3, irf.data1_disp4]
+    # backsweep: True
+    # backsweep_period: irf.common_backsweep
+    # backsweep_exclude: [s15,s16]

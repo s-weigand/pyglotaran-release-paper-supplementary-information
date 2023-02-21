@@ -1,0 +1,69 @@
+default_megacomplex: decay
+dataset_groups:
+  default:
+    residual_function: variable_projection
+    link_clp: True
+    # residual_function: non_negative_least_squares
+
+# type: kinetic-spectrum
+dataset:
+  # Kcr_rcra:
+  rc:
+    megacomplex: [artifact1, complex1]
+    # megacomplex_scale: [scalem.1]
+    initial_concentration: input1
+    irf: irf1
+    scale: scale.1
+
+megacomplex:
+  complex1:
+    k_matrix: [km1common]
+  artifact1:
+    type: coherent-artifact
+    order: 3
+
+# how can i now express that the first 20 lines
+# are common for complexes 1-5, and the next 11 lines
+# are common for complexes 1-4? how can i specify in chunks?
+# note that earlier definition will override later definition
+k_matrix:
+  km1common:
+    matrix:
+      # Rename r1,... to be consistent with original paper, more verbose names
+      # (r2, r1): rates.rc.dcm.to_r2_from_r1
+      # (r2, r1): rc.dcm.rates.to_r2_from_r1
+      (r2, r1): rates.k21 #
+      (r3, r2): rates.k32
+      (r4, r3): rates.k43
+      (r4, r4): rates.k44
+
+initial_concentration:
+  input1:
+    compartments: [r1, r2, r3, r4]
+    parameters: [inputs1.s1, inputs1.0, inputs1.0, inputs1.0]
+
+# it is implicitly normalized, i.e. divided by sum of irfscale parameters
+irf:
+  irf1:
+    type: spectral-gaussian
+    # center: irf.rc.dcm.center
+    center: irf.center1
+    # width: irf.rc.dcm.width
+    width: irf.width1
+    # scale: [irf.scale1,irf.scale4]
+    # dispersion_center: irf.common_disp_center
+    dispersion_center: irf.common_dispcenter
+    # center_dispersion_coefficients: [irf.rc.dcm.disp1, irf.rc.dcm.disp2]
+    # center_dispersion_coefficients: [rc.dcm.irf.disp1, rc.dcm.irf.disp2]
+    center_dispersion_coefficients: [irf.data1_disp1, irf.data1_disp2]
+    model_dispersion_with_wavenumber: true
+
+weights:
+  # - datasets: [Kcr_rcra]
+  - datasets: [dataset1]
+    global_interval: [520, 535]
+    value: 0.4
+  # - datasets: [Kcr_rcra]
+  - datasets: [dataset1]
+    global_interval: [1, 420]
+    value: 0.2
