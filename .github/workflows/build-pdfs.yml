@@ -1,0 +1,50 @@
+name: Build-PDFs
+
+on:
+  # For now commented out since private repositories only have a limited amount of CI time
+  # push:
+  # pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: 🚀 Compile PDFs ${{ matrix.case_study }}
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+    strategy:
+      matrix:
+        case_study: [4TT, dPSI, rc]
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - uses: actions/cache@v3
+        name: Tectonic Cache
+        with:
+          path: ~/.cache/Tectonic
+          key: ${{ runner.os }}-tectonic-${{ hashFiles('**/_preamble*.tex') }}
+          restore-keys: |
+            ${{ runner.os }}-tectonic-
+
+      - name: Install Conda environment with Micromamba
+        uses: mamba-org/provision-with-micromamba@v15
+        with:
+          cache-env: true
+
+      - name: Setup tectonic and biber
+        uses: wtfjoke/setup-tectonic@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          biber-version: "2.17"
+
+      - name: Run notebooks and build PDFs
+        run: |
+          python scripts/create_notebook_pdf.py ${{ matrix.case_study }}
+
+      - name: Upload PDFs
+        uses: actions/upload-artifact@v3
+        with:
+          name: pdfs
+          path: pdfs/*.pdf
