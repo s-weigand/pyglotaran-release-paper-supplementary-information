@@ -5,26 +5,22 @@ dataset_groups:
     link_clp: True
     # residual_function: non_negative_least_squares
 
-# type: kinetic-spectrum
 dataset:
   tas_rcg_dcm:
     megacomplex: [artifact_rcg_dcm, complex_rcg_dcm]
-    # megacomplex_scale: [scalem.1]
     initial_concentration: input_rcg
     irf: irf_rcg
     scale: scale.rcg_dcm
-  # tas_gcrcg_dcm:
-  #   megacomplex: [artifact_gcrcg_dcm,complex_gcrcg_dcm]
-  #   # megacomplex_scale: [scalem.2]
-  #   initial_concentration: input_gcrcg
-  #   irf: irf_gcrcg
-  #   scale: scale.gcrcg_dcm
-  # tas_rcgcr_dcm:
-  #   megacomplex: [artifact_rcgcr_dcm,complex_rcgcr_dcm]
-  #   # megacomplex_scale: [scalem.7]
-  #   initial_concentration: input_rcgcr
-  #   irf: irf_rcgcr
-  #   scale: scale.rcgcr_dcm
+  tas_gcrcg_dcm:
+    megacomplex: [artifact_gcrcg_dcm, complex_gcrcg_dcm]
+    initial_concentration: input_gcrcg
+    irf: irf_gcrcg
+    scale: scale.gcrcg_dcm
+  tas_rcgcr_dcm:
+    megacomplex: [artifact_rcgcr_dcm, complex_rcgcr_dcm]
+    initial_concentration: input_rcgcr
+    irf: irf_rcgcr
+    scale: scale.rcgcr_dcm
   guide_rcg_r1:
     megacomplex: [complex_guide_rcg_r1]
     scale: scale.guide_rcg_r1
@@ -40,36 +36,36 @@ dataset:
   guide_rcg_g:
     megacomplex: [complex_guide_rcg_g]
     scale: scale.guide_rcg_g
-  # guide_gcrcg_r1:
-  #   megacomplex: [complex_guide_gcrcg_r1]
-  #   scale: scale.guide_gcrcg_r1
-  # guide_gcrcg_r2:
-  #   megacomplex: [complex_guide_gcrcg_r2]
-  #   scale: scale.guide_gcrcg_r2
-  # guide_gcrcg_r3:
-  #   megacomplex: [complex_guide_gcrcg_r3]
-  #   scale: scale.guide_gcrcg_r3
-  # guide_gcrcg_r4:
-  #   megacomplex: [complex_guide_gcrcg_r4]
-  #   scale: scale.guide_gcrcg_r4
-  # guide_gcrcg_g:
-  #   megacomplex: [complex_guide_gcrcg_g]
-  #   scale: scale.guide_gcrcg_g
-  # guide_rcgcr_r1:
-  #   megacomplex: [complex_guide_rcgcr_r1]
-  #   scale: scale.guide_rcgcr_r1
-  # guide_rcgcr_r2:
-  #   megacomplex: [complex_guide_rcgcr_r2]
-  #   scale: scale.guide_rcgcr_r2
-  # guide_rcgcr_r3:
-  #   megacomplex: [complex_guide_rcgcr_r3]
-  #   scale: scale.guide_rcgcr_r3
-  # guide_rcgcr_r4:
-  #   megacomplex: [complex_guide_rcgcr_r4]
-  #   scale: scale.guide_rcgcr_r4
-  # guide_rcgcr_g:
-  #   megacomplex: [complex_guide_rcgcr_g]
-  #   scale: scale.guide_rcgcr_g
+  guide_gcrcg_r1:
+    megacomplex: [complex_guide_gcrcg_r1]
+    scale: scale.guide_gcrcg_r1
+  guide_gcrcg_r2:
+    megacomplex: [complex_guide_gcrcg_r2]
+    scale: scale.guide_gcrcg_r2
+  guide_gcrcg_r3:
+    megacomplex: [complex_guide_gcrcg_r3]
+    scale: scale.guide_gcrcg_r3
+  guide_gcrcg_r4:
+    megacomplex: [complex_guide_gcrcg_r4]
+    scale: scale.guide_gcrcg_r4
+  guide_gcrcg_g:
+    megacomplex: [complex_guide_gcrcg_g]
+    scale: scale.guide_gcrcg_g
+  guide_rcgcr_r1:
+    megacomplex: [complex_guide_rcgcr_r1]
+    scale: scale.guide_rcgcr_r1
+  guide_rcgcr_r2:
+    megacomplex: [complex_guide_rcgcr_r2]
+    scale: scale.guide_rcgcr_r2
+  guide_rcgcr_r3:
+    megacomplex: [complex_guide_rcgcr_r3]
+    scale: scale.guide_rcgcr_r3
+  guide_rcgcr_r4:
+    megacomplex: [complex_guide_rcgcr_r4]
+    scale: scale.guide_rcgcr_r4
+  guide_rcgcr_g:
+    megacomplex: [complex_guide_rcgcr_g]
+    scale: scale.guide_rcgcr_g
 
 megacomplex:
   complex_rcg_dcm:
@@ -148,10 +144,6 @@ megacomplex:
     target: rcgcr_g
     type: clp-guide
 
-# how can i now express that the first 20 lines
-# are common for complexes 1-5, and the next 11 lines
-# are common for complexes 1-4? how can i specify in chunks?
-# note that earlier definition will override later definition
 k_matrix:
   km_rcg_common:
     matrix:
@@ -233,43 +225,11 @@ clp_relations:
     parameter: rel.r1
     interval: [[0, 1000]]
 
-# spectral_constraints:
-# - type: zero
-#   compartment: s1
-#   interval:
-#     - [700,1000]
-# - type: zero
-#   compartment: s2
-#   interval:
-#     - [1, 687]
-# - type: zero
-#   compartment: s3
-#   interval:
-#     - [1, 687]
-# - type: zero
-#   compartment: s4
-#   interval:
-#     - [1, 687]
-# - type: zero
-#   compartment: g
-#   interval:
-#     - [1, 687]
-# # - type: zero
-# #   compartment: s6
-# #   interval:
-# #     - [1, 687]
-# - type: zero
-#   compartment: artifact
-#   interval:
-#     - [595,1000]
-
-# it is implicitly normalized, i.e. divided by sum of irfscale parameters
 irf:
   irf_rcg:
     type: spectral-gaussian
     center: irf.center1
     width: irf.width1
-    # scale: [irf.scale1,irf.scale4]
     dispersion_center: irf.common_dispcenter
     center_dispersion_coefficients: [irf.data1_disp1, irf.data1_disp2]
     model_dispersion_with_wavenumber: true
@@ -277,7 +237,6 @@ irf:
     type: spectral-gaussian
     center: irf.center2
     width: irf.width2
-    # scale: [irf.scale1,irf.scale4]
     dispersion_center: irf.common_dispcenter
     center_dispersion_coefficients: [irf.data1_disp1, irf.data1_disp2]
     model_dispersion_with_wavenumber: true
@@ -285,7 +244,6 @@ irf:
     type: spectral-gaussian
     center: irf.center7
     width: irf.width7
-    # scale: [irf.scale1,irf.scale4]
     dispersion_center: irf.common_dispcenter
     center_dispersion_coefficients: [irf.data1_disp1, irf.data1_disp2]
     model_dispersion_with_wavenumber: true
@@ -314,6 +272,4 @@ weights:
         guide_rcgcr_r4,
         guide_rcgcr_g,
       ]
-    # global_interval: [1, 999]
-    # model_interval: [1, 999]
     value: 0.001

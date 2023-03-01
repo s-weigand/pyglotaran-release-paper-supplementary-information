@@ -1,5 +1,3 @@
-# type: doas
-
 initial_concentration:
   j1:
     compartments: [S2, S1, T1, S2rel, T1hot]
@@ -34,9 +32,6 @@ megacomplex:
   decay:
     type: decay
     k_matrix: [k1]
-  #  baseline:
-  #    type: baseline
-  #    dimension: time
   artifact:
     type: coherent-artifact
     order: 3
@@ -52,7 +47,7 @@ irf:
     model_dispersion_with_wavenumber: true
 
 dataset:
-  4TT:
+  corr4TT:
     initial_concentration: j1
     megacomplex: [doas, decay, artifact]
     irf: irf1

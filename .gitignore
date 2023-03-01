@@ -131,6 +131,9 @@ dmypy.json
 # vscode config
 .vscode
 
+# project data folder populated by data_import
+data/
+
 # result folders
 20*/
 results/
@@ -141,3 +144,6 @@ guide/
 
 # Generated PDFs and tex source
 pdfs
+
+# project files
+*.gta

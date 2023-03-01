@@ -1,0 +1,23 @@
+inputs1:
+  - ["s1", 1, { vary: False }]
+  - ["0", 0, { vary: False }]
+
+rates:
+  - ["k21", 7.72667789, { "vary": False }]
+  - ["k32", 1.57667196, { "vary": False }]
+  - ["k43", 0.150893405, { "vary": False }]
+  - ["k44", 5.71769197E-04, { "vary": False }]
+
+rel:
+  - ["r1", 1, { "vary": False }]
+  - ["r2", 1.1, { "vary": False }]
+
+scale:
+  - ["1", 1, { "vary": False }]
+
+irf:
+  - ["common_dispcenter", 550, { "vary": False }]
+  - ["data1_disp1", -0.840490937, { "vary": False }]
+  - ["data1_disp2", -0.354524136, { "vary": False }]
+  - ["center1", 1.21, { "vary": True }]
+  - ["width1", 5.053E-02, { "vary": False }]

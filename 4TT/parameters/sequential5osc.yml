@@ -1,8 +1,5 @@
 osc:
   freq: [752.314148, 495.196503, 206.952820, 767.406006, { vary: True }]
-  # rates: [
-  #  3.04113483,    11.2777481,    8.30780029,   -9.46621990,  {vary: True}]
-  # 3.04113483,    11.2777481,    8.3078009,   {vary: True}]
   rates:
     - ["1", 3.04113483, { vary: True }]
     - ["2", 11.2777481, { vary: True }]
@@ -14,10 +11,7 @@ j:
   - ["0", 0.0, { non-negative: False, vary: False }]
 
 kinetic:
-  # - ['to_S2rel_from_S2',6.58372021, {non-negative: True, vary: False}]
   - ["to_S1_from_S2", 8.39700508, { non-negative: True, vary: True }]
-  # - ['to_S1_from_S2rel', 4.36121597, {non-negative: True, vary: False}]
-  # - ['to_T1hot_from_S2rel', 1.6, {non-negative: True, vary: False}]
   - ["to_T1hot_from_S1", 2.24768806, { non-negative: True, vary: True }]
   - ["to_T1_from_T1hot", 0.568519056, { non-negative: True, vary: True }]
   - ["from_T1", 1.00000005E-03, { non-negative: True, vary: False }]

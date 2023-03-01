@@ -76,10 +76,6 @@ megacomplex:
   #   target: s1
   #   type: clp-guide
 
-# how can i now express that the first 20 lines
-# are common for complexes 1-5, and the next 11 lines
-# are common for complexes 1-4? how can i specify in chunks?
-# note that earlier definition will override later definition
 k_matrix:
   km1common:
     matrix:
@@ -213,16 +209,6 @@ initial_concentration:
   input6:
     compartments: [s4]
     parameters: [inputs.s2]
-
-# 6 needed ! does this mean that the penalty is s1-s2*area.1 ?
-# equal_area_penalties:
-#   - type: equal_area
-#     source: s2
-#     source_intervals: [[0, 1000]]
-#     target: s1
-#     target_intervals: [[0, 1000]]
-#     parameter: area.1
-#     weight: 2.E-3
 
 clp_relations:
   - source: s1

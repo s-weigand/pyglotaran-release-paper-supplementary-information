@@ -1,0 +1,39 @@
+inputs1:
+  - ["s1", 1, { vary: False }]
+  - ["0", 0, { vary: False }]
+  - ["g_rcg", 0.12, { vary: False }]
+
+rates:
+  - ["k21", 7.72667789, { "vary": False }]
+  - ["k32", 1.57667196, { "vary": False }]
+  - ["k43", 0.150893405, { "vary": False }]
+  - ["k44", 5.71769197E-04, { "vary": False }]
+  - ["k55", 3.31293675E-04, { "vary": False }]
+  - ["k51", 0.318180293, { "vary": False }]
+  - ["k52", 1, { "expr": "$rates.k51" }]
+  - ["k54", 1, { "expr": "$rates.k53" }]
+  - ["k53", 0.458410978, { "vary": False }]
+  - ["k62", 1, { "expr": "$rates.k61" }]
+  - ["k61", 0.147264779, { "vary": False }]
+  - ["k66", 9.56490561E-02, { "vary": False }]
+
+area:
+  - ["1", 1, { "vary": False }]
+
+rel:
+  - ["r1", 1, { "vary": False }]
+
+scale:
+  - ["rcg_dcm", 1, { "vary": False }]
+  - ["guide_rcg_r1", 1136.46911340376, { "vary": True }]
+  - ["guide_rcg_r2", 1, { "expr": "$scale.guide_rcg_r1" }]
+  - ["guide_rcg_r3", 1, { "expr": "$scale.guide_rcg_r1" }]
+  - ["guide_rcg_r4", 1, { "expr": "$scale.guide_rcg_r1" }]
+  - ["guide_rcg_g", 504.658491592697, { "vary": True }]
+
+irf:
+  - ["common_dispcenter", 550, { "vary": False }]
+  - ["data1_disp1", -0.840490937, { "vary": False }]
+  - ["data1_disp2", -0.354524136, { "vary": False }]
+  - ["center1", 1.04188406, { "vary": False }]
+  - ["width1", 5.79295903E-02, { "vary": False }]
