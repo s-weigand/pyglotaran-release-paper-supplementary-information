@@ -5,7 +5,7 @@ dataset_groups:
     link_clp: True
 
 dataset:
-  rc:
+  rc_raw:
     megacomplex: [artifact1, complex1]
     initial_concentration: input1
     irf: irf1
@@ -49,3 +49,11 @@ irf:
     # center_dispersion_coefficients: [rc.dcm.irf.disp1, rc.dcm.irf.disp2]
     center_dispersion_coefficients: [irf.data1_disp1, irf.data1_disp2]
     model_dispersion_with_wavenumber: true
+
+weights:
+  - datasets: [rc_raw]
+    global_interval: [850, 1000]
+    value: 0.2
+  - datasets: [rc_raw]
+    global_interval: [1, 420]
+    value: 0.2
