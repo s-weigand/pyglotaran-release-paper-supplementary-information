@@ -95,6 +95,5 @@ weights:
   - datasets: [tas_rcg_dcm]
     global_interval: [1, 420]
     value: 0.2
-  - datasets:
-      [guide_rcg_r1, guide_rcg_r2, guide_rcg_r3, guide_rcg_r4, guide_rcg_g]
+  - datasets: [guide_rcg_g]
     value: 0.001

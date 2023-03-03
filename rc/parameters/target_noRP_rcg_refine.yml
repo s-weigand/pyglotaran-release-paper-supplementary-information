@@ -22,7 +22,7 @@ rel:
 
 scale:
   - ["rcg_dcm", 1, { "vary": False }]
-  - ["guide_rcg_r1", 1136.46911340376, { "vary": True }]
+  - ["guide_rcg_r1", 1.13646911340376, { "vary": True }]
   - ["guide_rcg_r2", 1, { "expr": "$scale.guide_rcg_r1" }]
   - ["guide_rcg_r3", 1, { "expr": "$scale.guide_rcg_r1" }]
   - ["guide_rcg_r4", 1, { "expr": "$scale.guide_rcg_r1" }]

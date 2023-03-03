@@ -43,18 +43,9 @@ irf:
     # width: irf.rc.dcm.width
     width: irf.width1
     # scale: [irf.scale1,irf.scale4]
+    # dispersion_center: irf.common_disp_center
     dispersion_center: irf.common_dispcenter
     # center_dispersion_coefficients: [irf.rc.dcm.disp1, irf.rc.dcm.disp2]
     # center_dispersion_coefficients: [rc.dcm.irf.disp1, rc.dcm.irf.disp2]
     center_dispersion_coefficients: [irf.data1_disp1, irf.data1_disp2]
     model_dispersion_with_wavenumber: true
-
-clp_relations:
-  - source: r2
-    target: r1
-    parameter: rel.r1
-    interval: [[520, 538]]
-  - source: r3
-    target: r1
-    parameter: rel.r2
-    interval: [[750, 860]]
