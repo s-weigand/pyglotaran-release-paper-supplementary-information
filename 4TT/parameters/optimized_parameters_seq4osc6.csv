@@ -13,10 +13,10 @@ osc.rates.5,12.73268593,0.39918746,None,,,False,True
 osc.rates.6,5,0.39918746,None,,,False,True
 j.1,1,None,None,,,False,False
 j.0,0,None,None,,,False,False
-kinetic.to_S1_from_S2,14.39260816,0.012233239,None,,,True,True
-kinetic.to_T1hot_from_S1,3.523533029,0.002912155,None,,,True,True
-kinetic.to_T1_from_T1hot,0.372874303,0.086105768,None,,,True,True
-kinetic.from_T1,0.001,None,None,,,True,False
+rates.to_S1_from_S2,14.39260816,0.012233239,None,,,True,True
+rates.to_T1hot_from_S1,3.523533029,0.002912155,None,,,True,True
+rates.to_T1_from_T1hot,0.372874303,0.086105768,None,,,True,True
+rates.from_T1,0.001,None,None,,,True,False
 irf.center,0.168994081,6.58E-05,None,,,False,True
 irf.width,0.008333541,None,None,,,True,False
 irf.dispcenter,530,None,None,,,False,False

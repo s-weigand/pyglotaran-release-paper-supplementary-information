@@ -10,7 +10,7 @@ j:
   - ["1", 1.0, { non-negative: False, vary: False }]
   - ["0", 0.0, { non-negative: False, vary: False }]
 
-kinetic:
+rates:
   - ["to_S2rel_from_S2", 6.58372021, { non-negative: True, vary: False }]
   - ["to_S1_from_S2", 8.39700508, { non-negative: True, vary: False }]
   - ["to_S1_from_S2rel", 4.36121597, { non-negative: True, vary: False }]
