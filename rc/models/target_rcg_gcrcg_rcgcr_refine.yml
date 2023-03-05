@@ -256,10 +256,6 @@ weights:
     value: 0.2
   - datasets:
       [
-        guide_rcg_r1,
-        guide_rcg_r2,
-        guide_rcg_r3,
-        guide_rcg_r4,
         guide_rcg_g,
         guide_gcrcg_r1,
         guide_gcrcg_r2,
