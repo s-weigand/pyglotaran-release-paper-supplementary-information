@@ -26,7 +26,7 @@ You should see a terminal windows open in the (base) environment.
 Type the following command to create a new standalone environment for pyglotaran.
 
 ```console
-conda create -y --name pyglotaran python=3.10
+conda create -c conda-forge -y --name pyglotaran python=3.10
 ```
 
 ![](./.images/AnacondaPrompt-Terminal-Windows.png)
