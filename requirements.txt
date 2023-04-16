@@ -1,7 +1,6 @@
-# Until the 0.7.0 release we can use an installation of the development version on github
-git+https://github.com/glotaran/pyglotaran.git
-git+https://github.com/glotaran/pyglotaran-extras.git
-
+# pyglotaran
+pyglotaran>=0.7.0
+pyglotaran-extras>=0.7.0
 
 # Testing
 pytest>=7.2.1
