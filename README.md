@@ -1,5 +1,7 @@
 # pyglotaran-release-paper-supplementary-information
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7658982.svg)](https://doi.org/10.5281/zenodo.7658982)
+
 Supplementary Information (SI) to the pyglotaran release paper
 
 ## Getting started with this repository
@@ -115,3 +117,15 @@ More information on the most recent version of `pyglotaran` and `pyglotaran-extr
 
 - https://github.com/glotaran/pyglotaran
 - https://github.com/glotaran/pyglotaran-extras
+
+## License
+
+Except where otherwise noted, the work in this repository is dual-licensed:
+
+- The source code is available under the ([MIT License](https://spdx.org/licenses/MIT.html))
+- Documentation, text, figures, etc, are licenses under `Creative Commons Attribution 4.0 International` [(CC-BY-4.0)](https://spdx.org/licenses/CC-BY-4.0.html). You can attribute them by citing the pyglotaran publication accompanying this supplementary information.
+
+These licenses are provided in plain text as a convenience to the user as [LICENSE](LICENSE) and [LICENSE-CC-BY](LICENSE-CC-BY) respectively.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/license/mit/)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
