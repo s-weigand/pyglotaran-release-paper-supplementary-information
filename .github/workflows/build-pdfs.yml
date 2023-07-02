@@ -1,9 +1,8 @@
 name: Build-PDFs
 
 on:
-  # For now commented out since private repositories only have a limited amount of CI time
-  # push:
-  # pull_request:
+  push:
+  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -48,3 +47,9 @@ jobs:
         with:
           name: pdfs
           path: pdfs/*.pdf
+
+      - name: Upload Evaluated Notebooks
+        uses: actions/upload-artifact@v3
+        with:
+          name: notebooks
+          path: ${{ matrix.case_study }}/*.ipynb
