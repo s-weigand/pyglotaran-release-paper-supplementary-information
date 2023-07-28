@@ -1,5 +1,5 @@
 # pyglotaran
-pyglotaran>=0.7.0
+pyglotaran>=0.7.1
 pyglotaran-extras>=0.7.1
 
 # Testing

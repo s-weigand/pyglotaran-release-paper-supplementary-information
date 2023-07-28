@@ -59,6 +59,8 @@ Alternatively (if you are more familiar with it) you can install using pip as we
 pip install pyglotaran pyglotaran-extras jupyterlab
 ```
 
+Look at the installation output to verify that you installed pyglotaran version 0.7.1 or later, and pyglotaran-extras version 0.7.1 or later.
+
 <sub>Note: the main package is `pyglotaran`, `pyglotaran-extras` provides additional plotting functionality, whereas `jupyterlab` provides a way to work with notebooks.</sub>
 
 ### 4. Start Jupyter notebook within Supplementary Information folder
