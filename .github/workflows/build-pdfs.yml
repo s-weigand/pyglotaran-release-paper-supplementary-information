@@ -27,10 +27,17 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-tectonic-
 
+      - name: Get env file hash
+        id: env-file-hash
+        run: echo "hash=$(md5sum environment.yml)" >> "${GITHUB_OUTPUT}"
+
       - name: Install Conda environment with Micromamba
-        uses: mamba-org/provision-with-micromamba@v15
+        uses: mamba-org/setup-micromamba@v1
         with:
-          cache-env: true
+          environment-file: environment.yml
+          # persist on the same day.
+          cache-environment-key: environment-${{ steps.env-file-hash.outputs.hash }}
+          cache-downloads-key: downloads-${{ steps.env-file-hash.outputs.hash }}
 
       - name: Setup tectonic and biber
         uses: wtfjoke/setup-tectonic@v2

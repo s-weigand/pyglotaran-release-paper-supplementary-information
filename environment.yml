@@ -18,4 +18,4 @@ dependencies:
   - pandoc>=2.19.2
   # pyglotaran
   - pyglotaran>=0.7.0
-  - pyglotaran-extras>=0.7.0
+  - pyglotaran-extras>=0.7.1

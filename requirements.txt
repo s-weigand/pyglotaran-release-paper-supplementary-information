@@ -1,6 +1,6 @@
 # pyglotaran
 pyglotaran>=0.7.0
-pyglotaran-extras>=0.7.0
+pyglotaran-extras>=0.7.1
 
 # Testing
 pytest>=7.2.1
