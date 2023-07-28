@@ -60,3 +60,37 @@ jobs:
         with:
           name: notebooks
           path: ${{ matrix.case_study }}/*.ipynb
+
+  upload-artifacts:
+    name: 📦⬆️ Deploy assets to release page
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+    permissions:
+      contents: write
+    needs: build
+    steps:
+      - name: ⬇ Download pdf artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: pdfs
+          path: pdfs
+
+      - name: ⬇ Download notebooks artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: notebooks
+          path: notebooks
+
+      - name: 🚀⬆️ Upload pdf Asset
+        if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: pdfs/*
+
+      - name: 🚀⬆️ Upload notebooks Asset
+        if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: notebooks/*
+          generate_release_notes: true
+          append_body: true
